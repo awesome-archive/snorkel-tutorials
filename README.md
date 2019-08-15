@@ -137,7 +137,7 @@ Make sure to select the right kernel (`conda_spam`) when running the jupyter not
 </details>
 
 Then in the browser tab that opens, navigate to a `.ipynb` file you would like
-to run &mdash; such as `01_spam_tutorial.ipynb` &mdash; and execute the
+to run &mdash; such as `spam/01_spam_tutorial.ipynb` &mdash; and execute the
 cells in sequence.
 
 Alternatively, you can run the tutorial as a script by calling `python3` on the corresponding `.py` file directly (e.g. `python3 spam/01_spam_tutorial.py`).
@@ -156,10 +156,10 @@ Here we provide an index pointing to different available tutorials by their task
     * Augmentation with Transformation Functions (TFs): `spam`
     * Monitoring with Slicing Functions (SFs): `spam`
     * Using Crowd Worker Labels: `crowdsourcing`
-    * Multi-Task Learning (MTL): `multitask`, `visual_relation`, `spam`
+    * Multi-Task Learning (MTL): `multitask`, `spam`
 * Integrations
     * TensorFlow/Keras: `spam`, `spouse`
     * Scikit-Learn: `spam`, `crowdsourcing`
-    * PyTorch: `multitask`
+    * PyTorch: `multitask`, `visual_relation`
     * Dask: `drybell`
     * Spark: `drybell`
