@@ -756,7 +756,7 @@ preds_train
 from snorkel.labeling import LabelModel
 
 label_model = LabelModel(cardinality=2, verbose=True)
-label_model.fit(L_train=L_train, n_epochs=1000, lr=0.001, log_freq=100, seed=123)
+label_model.fit(L_train=L_train, n_epochs=500, lr=0.001, log_freq=100, seed=123)
 
 # %%
 majority_acc = majority_model.score(L=L_valid, Y=Y_valid)["accuracy"]
@@ -783,10 +783,10 @@ probs_dev = majority_model.predict_proba(L=L_dev)
 preds_dev = probs_dev >= 0.5
 buckets = get_label_buckets(Y_dev, preds_dev[:, 1])
 
-df_fp_dev = df_dev[["text", "label"]].iloc[buckets[(SPAM, HAM)]]
-df_fp_dev["probability"] = probs_dev[buckets[(SPAM, HAM)], 1]
+df_fn_dev = df_dev[["text", "label"]].iloc[buckets[(SPAM, HAM)]]
+df_fn_dev["probability"] = probs_dev[buckets[(SPAM, HAM)], 1]
 
-df_fp_dev.sample(5, random_state=3)
+df_fn_dev.sample(5, random_state=3)
 
 
 # %% [markdown] {"tags": ["md-exclude"]}
@@ -892,7 +892,7 @@ keras_model.fit(
     y=probs_train_filtered,
     validation_data=(X_valid, preds_to_probs(Y_valid, 2)),
     callbacks=[get_keras_early_stopping()],
-    epochs=20,
+    epochs=50,
     verbose=0,
 )
 
@@ -917,7 +917,7 @@ keras_dev_model.fit(
     y=Y_dev,
     validation_data=(X_valid, Y_valid),
     callbacks=[get_keras_early_stopping()],
-    epochs=20,
+    epochs=50,
     verbose=0,
 )
 
